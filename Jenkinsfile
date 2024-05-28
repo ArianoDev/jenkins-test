@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage ('Configuation') {
-      step {
+      steps {
         sh 'hostname'
       }
     }
