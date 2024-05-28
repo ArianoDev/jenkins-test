@@ -1,2 +1,2 @@
-from ninx
+from nginx
 RUN touch file1
