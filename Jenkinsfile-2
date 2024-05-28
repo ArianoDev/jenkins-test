@@ -1,0 +1,22 @@
+pipeline {
+  agent none
+  stages {
+    stage ('Container1') {
+      agent {
+        docker { image 'nginx' }
+      }
+      steps {
+        sh 'hostname'
+        sh 'nginx -v'
+      }
+    }
+    stage ('Container2') {
+      agent {
+        docker { image 'ubuntu' }
+      }
+      steps {
+        sh 'uname -a'
+      }
+    }
+  }
+}
