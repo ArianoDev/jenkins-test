@@ -6,7 +6,7 @@ pipeline {
           steps {
               echo 'Build img custom'
               sh 'docker build -t localhost:5000/app/app-python-img .'
-              sh 'docker push localhost:5000/app/app-python-ing'
+              sh 'docker push localhost:5000/app/app-python-img'
           }
       }
       stage('Test') {
