@@ -1,0 +1,17 @@
+pipeline {
+    agent { label 'docker-ubuntu-22' }
+    
+    stages {
+      stage ('Build') {
+        echo 'Build img custom'
+        sh 'docker build -t localhost:5000/app/app-python-img'
+        sh 'docker push localhost:5000/app/app-python-ing
+      }
+      stage('Test') {
+        steps {
+          echo 'Run di nginx'
+          sh 'docker rm -f app-python ; docker run -d -p 81:80 --name app-pyton app-python-img'
+        }
+      }
+    }
+}
