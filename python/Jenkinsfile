@@ -5,6 +5,7 @@ pipeline {
       stage ('Build') {
           steps {
               echo 'Build img custom'
+              sh 'cd python'
               sh 'pwd'
               sh 'docker build -t localhost:5000/app/app-python-img .'
               sh 'docker push localhost:5000/app/app-python-img'
@@ -12,8 +13,9 @@ pipeline {
       }
       stage('Test') {
         steps {
-          echo 'Run di nginx'
-          sh 'docker rm -f app-python ; docker run -d -p 81:80 --name app-pyton app-python-img'
+          echo 'Run di Flask'
+            sh 'cd python'
+            sh 'docker rm -f app-python ; docker run -d -p 81:80 --name app-pyton app-python-img'
         }
       }
     }
